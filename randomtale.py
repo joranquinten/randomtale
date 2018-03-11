@@ -1,14 +1,9 @@
-from os import listdir
-from os.path import isfile, join
-import random
+import file_loader
+import player
 
-mypath = "input"
-
-onlyfiles = [f for f in listdir(mypath) if isfile(join(mypath, f))]
-
-filetoplay = (random.choice(onlyfiles))
-
-print(filetoplay)
+file_to_play = file_loader.random_file("./input/")
+player.player_load(file_to_play, 1)
+player.player_start()
 
 '''
 http://www.pygame.org/docs/ref/music.html
