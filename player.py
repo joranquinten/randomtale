@@ -30,13 +30,13 @@ def player_start():
     pg.mixer.music.play()
 
 def player_stop():
-  if pg.mixer.music.get_busy()
+  if pg.mixer.music.get_busy():
     pg.mixer.music.stop()
 
 def player_pause():
-  if pg.mixer.music.get_busy()
+  if pg.mixer.music.get_busy():
     pg.mixer.music.pause()
 
 def player_resume():
-  if pg.mixer.music.get_busy()
+  if pg.mixer.music.get_busy():
     pg.mixer.music.unpause()
