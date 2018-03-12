@@ -1,6 +1,23 @@
 RandomTale
 ==========
 
+# Requirements
+- Python 2.7
+- Pip
+
+# Install
+Use pip to install with requirements. Run the following command to execute:
+
+```
+python randomtale.py
+```
+
+To abort the script, press:
+
+```
+Ctrl + C
+```
+
 # Todo:
 
 - Apply controls
