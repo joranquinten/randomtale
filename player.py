@@ -1,6 +1,7 @@
 import pygame as pg
 
 def player_load(music_file, volume=0.8):
+    print("Loading")
     '''
     stream music with mixer.music module in a blocking manner
     this will stream the sound from disk while playing
@@ -26,17 +27,21 @@ def player_load(music_file, volume=0.8):
         clock.tick(30)
 
 def player_start():
-  if pg.mixer.music.get_busy() == False:
-    pg.mixer.music.play()
+    print("Started")
+    if pg.mixer.music.get_busy() == False:
+        pg.mixer.music.play()
 
 def player_stop():
-  if pg.mixer.music.get_busy():
-    pg.mixer.music.stop()
+    print("Stopped")
+    if pg.mixer.music.get_busy():
+        pg.mixer.music.stop()
 
 def player_pause():
-  if pg.mixer.music.get_busy():
-    pg.mixer.music.pause()
+    print("Paused")
+    if pg.mixer.music.get_busy():
+        pg.mixer.music.pause()
 
 def player_resume():
-  if pg.mixer.music.get_busy():
-    pg.mixer.music.unpause()
+    print("Resumed")
+    if pg.mixer.music.get_busy():
+        pg.mixer.music.unpause()
