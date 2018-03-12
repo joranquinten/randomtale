@@ -12,7 +12,7 @@ Use pip to install with requirements. Run the following command to execute:
 python randomtale.py
 ```
 
-To abort the script, use:
+To abort the script, execute:
 
 ```
 Ctrl + C
