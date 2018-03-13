@@ -1,4 +1,5 @@
-import pygame as pg
+import pygame
+
 
 def player_load(music_file, volume=0.8):
 
@@ -22,20 +23,16 @@ def player_load(music_file, volume=0.8):
         print("File {} not found! ({})".format(music_file, pygame.get_error()))
         return
 
+
 def player_start():
     print("player_start")
 
-    SONG_END = pygame.USEREVENT + 1
-    pygame.mixer.music.set_endevent(SONG_END)
-
-    clock = pygame.time.Clock()
     if pygame.mixer.music.get_busy() == False:
         pygame.mixer.music.play()
 
-    while True:
-    for event in pygame.event.get():
-        if event.type == SONG_END:
-            print("the song ended!")
+        while pygame.mixer.music.get_busy():
+            pygame.time.Clock().tick(10)
+
 
 def player_stop():
     print("player_stop")
