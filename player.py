@@ -1,6 +1,7 @@
 import pygame as pg
 
 def player_load(music_file, volume=0.8):
+
     print("player_load")
     '''
     stream music with mixer.music module in a blocking manner
@@ -11,27 +12,32 @@ def player_load(music_file, volume=0.8):
     bitsize = -16    # unsigned 16 bit
     channels = 2     # 1 is mono, 2 is stereo
     buffer = 2048    # number of samples (experiment to get best sound)
-    pg.mixer.init(freq, bitsize, channels, buffer)
+    pygame.mixer.init(freq, bitsize, channels, buffer)
     # volume value 0.0 to 1.0
-    pg.mixer.music.set_volume(volume)
+    pygame.mixer.music.set_volume(volume)
     try:
-        pg.mixer.music.load(music_file)
+        pygame.mixer.music.load(music_file)
         print("Music file {} loaded!".format(music_file))
-    except pg.error:
-        print("File {} not found! ({})".format(music_file, pg.get_error()))
+    except pygame.error:
+        print("File {} not found! ({})".format(music_file, pygame.get_error()))
         return
 
 def player_start():
     print("player_start")
-    clock = pg.time.Clock()
-    if pg.mixer.music.get_busy() == False:
-        pg.mixer.music.play()
-        while pg.mixer.music.get_busy():
-            # check if playback has finished
-            clock.tick(30)
 
+    SONG_END = pygame.USEREVENT + 1
+    pygame.mixer.music.set_endevent(SONG_END)
+
+    clock = pygame.time.Clock()
+    if pygame.mixer.music.get_busy() == False:
+        pygame.mixer.music.play()
+
+    while True:
+    for event in pygame.event.get():
+        if event.type == SONG_END:
+            print("the song ended!")
 
 def player_stop():
     print("player_stop")
-    if pg.mixer.music.get_busy():
-        pg.mixer.music.stop()
+    if pygame.mixer.music.get_busy():
+        pygame.mixer.stop()
